@@ -1,0 +1,7 @@
+{
+  "name": "own",
+  "version":"0.0.0",
+  "dependencies": {
+    "angular": "1.4.8"
+  }
+}
