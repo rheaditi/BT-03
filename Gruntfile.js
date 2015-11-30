@@ -2,6 +2,9 @@
 
 module.exports = function (grunt) {
 	
+	//loads all npm taska automagically
+	require('jit-grunt')(grunt);
+
 	/* Change these accordingly */
 	var appConfig = {
 		app: 'app',
@@ -24,7 +27,7 @@ module.exports = function (grunt) {
 	    	src: ['app/assets/styles/one.css', 'app/assets/styles/two.css'],
 	    	dest: 'dist/styles/app.css'
 	    }
-	  },
+	  },//end concat
 
 	  watch: {
 	  	js: {
@@ -35,7 +38,34 @@ module.exports = function (grunt) {
 	  		files: ['app/assets/styles/**/*.css'],
 	  		tasks: ['concat:css']
 	  	}
-	  },
+	  },//end watch
+
+	  connect: {
+	  	options: {
+	  		port: 7335,
+	  		hostname: 'localhost',
+	  		livereload: 35729
+	  	}, 
+	  	livereload: {
+	  		options: {
+	  			open: true,
+	  			middleware: function (connect) {
+	  				return [
+	  					connect.static('.tmp'),
+	  					connect().use(
+	  						'/bower_components',
+	  						connect.static('./bower_components')
+	  					),
+	  					connect().use(
+	  						'/app/assets/styles',
+	  						connect.static('./app/assets/styles')
+	  					),
+	  					connect.static(appConfig.app)
+	  				];
+	  			}
+	  		}
+	  	}
+	  },//end connect
 
 	});
 
@@ -43,9 +73,6 @@ module.exports = function (grunt) {
 	grunt.registerTask('default', ['watch']);
 
 
-	/* Contrib Taska loaded */
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-watch');
 
 }
 
