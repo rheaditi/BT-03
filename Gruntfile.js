@@ -20,22 +20,22 @@ module.exports = function (grunt) {
 		 /* Concatenation task */
 		 concat: {
 	    js: {
-	      src: ['<%= conf.jsSRC %>/**/*.js'],
+	      src: ['<%= conf.jsSRC %>/{,*/}*.js'],
 	      dest: '<%= conf.dist %>/scripts/app.js',
 	    },
 	    css: {
-	    	src: ['app/assets/styles/one.css', 'app/assets/styles/two.css'],
+	    	src: ['app/assets/styles/{,*/}*.css'],
 	    	dest: 'dist/styles/app.css'
 	    }
 	  },//end concat
 
 	  watch: {
 	  	js: {
-	  		files: ['app/scripts/**/*.js'],
+	  		files: ['app/scripts/{,*/}*.js'],
 	  		tasks: ['concat:js']
 	  	},
 	  	css: {
-	  		files: ['app/assets/styles/**/*.css'],
+	  		files: ['app/assets/styles/{,*/}*.css'],
 	  		tasks: ['concat:css']
 	  	}
 	  },//end watch
@@ -90,6 +90,8 @@ in watch.tasks use task:subtask
 {} allows for a comma-separated list of "or" expressions
 ! at the beginning of a pattern will negate the match
 
+
+/{,* /}*.js --< remove space after * | goes only one level deep (improves performance) 
 ************************************************************************
 **/
 
