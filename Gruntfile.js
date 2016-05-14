@@ -2,7 +2,7 @@
 
 module.exports = function (grunt) {
 	
-	//loads all npm taska automagically
+	//loads all npm tasks automagically
 	require('jit-grunt')(grunt);
 
 	/* Change these accordingly */
