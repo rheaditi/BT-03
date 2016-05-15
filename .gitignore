@@ -1,2 +1,8 @@
+# File System Artefacts
+.DS_Store
+*.sublime*
+
+# Regular stuff
 node_modules
 bower_components
+
