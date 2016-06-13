@@ -21,6 +21,7 @@
   "homepage": "https://github.com/rheaditi/BT01#readme",
   "devDependencies": {
     "grunt": "^1.0.1",
-    "jit-grunt": "^0.10.0"
+    "jit-grunt": "^0.10.0",
+    "lodash": "^4.12.0"
   }
 }
